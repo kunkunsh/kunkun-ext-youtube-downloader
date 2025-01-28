@@ -180,7 +180,7 @@ class DownloadYouTubeExtension extends WorkerExtension {
     }
 
     let url = await clipboard.readText();
-    // url = "https://youtu.be/-b1FogYHTZc"; // for development only
+    url = "https://youtu.be/-b1FogYHTZc"; // for development only
     // check if url is a valid youtube url
     if (!url.includes("youtube.com") && !url.includes("youtu.be")) {
       toast.warning("Invalid YouTube URL from clipboard");
@@ -189,8 +189,10 @@ class DownloadYouTubeExtension extends WorkerExtension {
     const formats = await this.rpc.api.getAvailableResolutions(url);
     const form = new Form.Form({
       title: "Download YouTube Video",
-      description: "Please copy a YouTube URL then enter this extension.",
-      key: "form1",
+      description: `Please copy a YouTube URL then enter this extension. 
+      High Resolution video (e.g. 4K) could take a very long time to download, please be patient. 
+      A progress bar with estimated time isn't implemented yet. There is a loading bar on the top.`,
+      key: "download-youtube-video",
       showFormDataDebug: true,
       submitBtnText: "Download",
       fields: [

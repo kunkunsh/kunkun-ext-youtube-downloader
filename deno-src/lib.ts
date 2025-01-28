@@ -125,7 +125,9 @@ export class YouTubeDownloader implements API {
 
     const videoStream = ytdl(url, { format: videoFormat });
     const audioStream = ytdl(url, { format: audioFormat });
-
+    videoStream.once("readable", () => {
+      startCallback?.();
+    });
     videoStream.on("progress", (_, downloaded, total) => {
       videoDownloaded += downloaded;
       const now = Date.now();
