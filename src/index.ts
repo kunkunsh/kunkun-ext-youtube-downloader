@@ -180,7 +180,7 @@ class DownloadYouTubeExtension extends WorkerExtension {
     }
 
     let url = await clipboard.readText();
-    url = "https://youtu.be/-b1FogYHTZc"; // for development only
+    // url = "https://youtu.be/-b1FogYHTZc"; // for development only
     // check if url is a valid youtube url
     if (!url.includes("youtube.com") && !url.includes("youtu.be")) {
       toast.warning("Invalid YouTube URL from clipboard");
