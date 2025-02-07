@@ -15,8 +15,8 @@ import {
   shell,
   toast,
   ui,
-  WorkerExtension,
-} from "@kksh/api/ui/worker";
+  TemplateUiCommand,
+} from "@kksh/api/ui/template";
 import type { API } from "./api";
 import * as v from "valibot";
 
@@ -64,7 +64,7 @@ const formSchema = v.object({
   resolutions: v.string(),
 });
 
-class DownloadYouTubeExtension extends WorkerExtension {
+class DownloadYouTubeExtension extends TemplateUiCommand {
   private rpc?: {
     api: API;
     rpcChannel: RPCChannel<object, API>;
