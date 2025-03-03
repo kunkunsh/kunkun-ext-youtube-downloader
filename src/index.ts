@@ -178,7 +178,11 @@ class DownloadYouTubeExtension extends TemplateUiCommand {
       });
       return ui.goBack();
     }
-
+    const hasText = await clipboard.hasText();
+    if (!hasText) {
+      toast.warning("No text found in clipboard");
+      return ui.goBack();
+    }
     let url = await clipboard.readText();
     // url = "https://youtu.be/-b1FogYHTZc"; // for development only
     // check if url is a valid youtube url
