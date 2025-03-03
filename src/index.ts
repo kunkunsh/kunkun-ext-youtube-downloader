@@ -16,6 +16,7 @@ import {
   toast,
   ui,
   TemplateUiCommand,
+  Markdown,
 } from "@kksh/api/ui/template";
 import type { API } from "./api";
 import * as v from "valibot";
@@ -169,7 +170,6 @@ class DownloadYouTubeExtension extends TemplateUiCommand {
       });
   }
   async load() {
-    this.rpc = await getRpcAPI();
     const ffmpegExists = await shell.hasCommand("ffmpeg");
     if (!ffmpegExists) {
       toast.error("ffmpeg not found", {
@@ -186,6 +186,16 @@ class DownloadYouTubeExtension extends TemplateUiCommand {
       toast.warning("Invalid YouTube URL from clipboard");
       return ui.goBack();
     }
+
+    ui.render(
+      new Markdown(`
+# Download YouTube Video
+
+Loading Information from YouTube URL: ${url}
+`)
+    );
+
+    this.rpc = await getRpcAPI();
     const formats = await this.rpc.api.getAvailableResolutions(url);
     const form = new Form.Form({
       title: "Download YouTube Video",
