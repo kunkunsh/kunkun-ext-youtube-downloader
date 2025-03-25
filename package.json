@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.kunkun.sh",
   "name": "kunkun-ext-youtube-dowloader",
-  "version": "0.1.4",
+  "version": "0.1.8",
   "license": "MIT",
   "type": "module",
   "kunkun": {
@@ -30,7 +30,9 @@
       "shell:stdin-write",
       "shell:kill"
     ],
-    "demoImages": [],
+    "demoImages": [
+      "https://i.imgur.com/hHtmbny.png"
+    ],
     "icon": {
       "type": "iconify",
       "value": "logos:youtube-icon"
@@ -49,16 +51,18 @@
     "build": "bun build.ts"
   },
   "dependencies": {
-    "@distube/ytdl-core": "^4.15.9",
-    "@kksh/api": "^0.1.1",
-    "i18next": "^23.15.1",
-    "valibot": "^1.0.0-beta.14"
+    "@distube/ytdl-core": "^4.16.5",
+    "@kksh/api": "^0.1.7",
+    "cheerio": "^1.0.0",
+    "googleapis": "^148.0.0",
+    "i18next": "^24.2.3",
+    "valibot": "^1.0.0"
   },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.8.2"
   },
   "files": [
     "./dist",
